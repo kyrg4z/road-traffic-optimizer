@@ -1,5 +1,3 @@
-import g4p_controls.*;
-
 int numLanes = 5;  // abc + de = 5 lanes total
 
 // Baseline values
@@ -16,32 +14,6 @@ float approachLength = 300; // Approach road length
 float roadHalfWidth;
 float[] ringRadius;         // The radius of the 4 roundabout lanes
 
-void setup() {
-  size(1200, 900);
-  smooth(4);
-  createGUI();
-
-  // Apply magnification
-  laneW = laneWBase * scaleF;
-  R_ring = R_ringBase * scaleF;
-
-  roadHalfWidth = laneW * 6 / 2.0;
-
-  // Roundabout 4-lane radius: inner -> outer
-  ringRadius = new float[4];
-  for (int i=0; i<4; i++) {
-    ringRadius[i] = R_ring + (i - 1.5) * laneW;  // Lane 1 is the innermost lane, and Lane 4 is the outermost lane.
-  }
-}
-
-void draw() {
-  background(25);
-  translate(width/2, height/2);
-
-  drawApproaches();
-  drawRoundabout();
-  drawAllEntrySplines();
-}
 
 
 // Draw 4 approaches (top, bottom, left, and right).
@@ -50,6 +22,7 @@ void drawApproaches() {
     drawOneApproach(arm);
   }
 }
+
 
 void drawOneApproach(int arm) {
   float ang = arm * HALF_PI;
@@ -122,6 +95,7 @@ void drawRoundabout() {
     }
   }
 }
+
 
 // Draw lane lines in all four directions.
 void drawAllEntrySplines() {
