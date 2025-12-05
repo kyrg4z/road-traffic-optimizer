@@ -1,3 +1,5 @@
+import g4p_controls.*;
+
 int numLanes = 5;  // abc + de = 5 lanes total
 
 // Baseline values
@@ -17,6 +19,7 @@ float[] ringRadius;         // The radius of the 4 roundabout lanes
 void setup() {
   size(1200, 900);
   smooth(4);
+  createGUI();
 
   // Apply magnification
   laneW = laneWBase * scaleF;
